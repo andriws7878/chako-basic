@@ -12,15 +12,7 @@
     "resources": "resources.json",
     "dataSources": {
       "mainService": {
-        "uri": "Northwind/v2/Northwind/Northwind.svc/",
-        "type": "OData",
-        "settings": {
-          "odataVersion": "2.0",
-          "localUri": "localService/metadata.xml"
-        }
-      },
-      "Northwind.svc": {
-        "uri": "Northwind/v2/Northwind/Northwind.svc/",
+        "uri": "V2/Northwind/Northwind.svc/",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0",
@@ -83,15 +75,6 @@
           "defaultCountMode": "Inline",
           "refreshAfterChange": false
         }
-      },
-      "northwind2": {
-        "dataSource": "Northwind.svc",
-        "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false
-        }
       }
     },
     "resources": {
@@ -114,20 +97,34 @@
       "routes": [
         {
           "name": "RouteApp",
-          "pattern": "RouteApp",
+          "pattern": "",
           "target": [
-            "TargetApp"
+            "TargetOverview"
           ]
-        }
+        },
+        {
+            "name": "Details",
+            "pattern": "details/{invoicePath}",
+            "target": [
+              "TargetDetails"
+            ]
+          }
       ],
       "targets": {
-        "TargetApp": {
+        "TargetOverview": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "App",
-          "viewName": "App"
-        }
+          "viewId": "Overview",
+          "viewName": "Overview"
+        },
+        "TargetDetails": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "Details",
+            "viewName": "Details"
+          }
       }
     },
     "rootView": {
